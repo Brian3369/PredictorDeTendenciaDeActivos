@@ -1,6 +1,6 @@
 ﻿namespace Application.ViewModel
 {
-    public class PredictionMode
+    public class PredictionModeViewModel
     {
         public int PredictionModes { get; set; }
     }

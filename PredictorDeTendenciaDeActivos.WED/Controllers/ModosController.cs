@@ -17,7 +17,7 @@ namespace PredictorDeTendenciaDeActivos.WED.Controllers
         public IActionResult Index(string? message = null)
         {
             var predictionModeDto = _predictionModeService.GetMode();
-            var predictionMode = new PredictionMode
+            var predictionMode = new PredictionModeViewModel
             {
                 PredictionModes = predictionModeDto.PredictionModes
             };
@@ -27,7 +27,7 @@ namespace PredictorDeTendenciaDeActivos.WED.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(PredictionMode mode)
+        public IActionResult Index(PredictionModeViewModel mode)
         {
             if (!ModelState.IsValid)
             {

@@ -1,4 +1,4 @@
-﻿@model Application.ViewModel.AddPreditionData
+﻿@model Application.ViewModel.PredictionViewModel
 
 @{
     ViewData["Title"] = "Home Page";
@@ -11,7 +11,7 @@
 
 <div>
     <div>
-        <form asp-controller="Modos" asp-action="Index" method="post">
+        <form asp-controller="Home" asp-action="Index" method="post">
             <div class="row">
                 @for (int i = 1; i <= 20; i++)
                 {
@@ -19,10 +19,12 @@
                         <div class="col-12 col-md-7">
                             <label asp-for="Date[@i-1]" class="form-label">Fecha @i</label>
                             <input asp-for="Date[@i-1]" type="date" class="form-control" />
+                            <span asp-validation-for="Date[@i-1]" class="text-danger"></span>
                         </div>
                         <div class="col-12 col-md-5">
                             <label asp-for="Valor[@i-1]" class="form-label">Valor @i</label>
                             <input asp-for="Valor[@i-1]" type="number" class="form-control" />
+                            <span asp-validation-for="Valor[@i-1]" class="text-danger"></span>
                         </div>
                     </div>
                 }
@@ -35,3 +37,11 @@
         </form>
     </div>
 </div>
+
+@if (!string.IsNullOrWhiteSpace(ViewBag.Resultado))
+{
+    <div class="col-12 col-md-8 mt-3 offset-md-2 alert alert-success alert-dismissible fade show" role="alert">
+        @ViewBag.Resultado 
+        <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+    </div>
+}

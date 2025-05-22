@@ -1,0 +1,37 @@
+﻿@model Application.ViewModel.AddPreditionData
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Registro del activo</h1>
+    <p>Organiza desde el mas reciente hasta el mas antiguo</p>
+</div>
+
+<div>
+    <div>
+        <form asp-controller="Modos" asp-action="Index" method="post">
+            <div class="row">
+                @for (int i = 1; i <= 20; i++)
+                {
+                    <div class="row mb-2">
+                        <div class="col-12 col-md-7">
+                            <label asp-for="Date[@i-1]" class="form-label">Fecha @i</label>
+                            <input asp-for="Date[@i-1]" type="date" class="form-control" />
+                        </div>
+                        <div class="col-12 col-md-5">
+                            <label asp-for="Valor[@i-1]" class="form-label">Valor @i</label>
+                            <input asp-for="Valor[@i-1]" type="number" class="form-control" />
+                        </div>
+                    </div>
+                }
+                <div class="row">
+                    <div class="col-12 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-primary mt-3">Calcular Prediccion</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

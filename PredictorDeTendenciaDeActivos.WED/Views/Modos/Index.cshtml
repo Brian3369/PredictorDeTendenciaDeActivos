@@ -1,0 +1,62 @@
+﻿@model Application.ViewModel.PredictionMode
+@{
+    ViewData["title"] = "Modos";
+}
+<div class="text-center">
+    <h1 class="display-4">Selector de modos</h1>
+    <p>Elige el modo</p>
+</div>
+
+<div class="row">
+    @if (Model.PredictionModes == 0 || Model.PredictionModes == 1)
+    {
+        <div class="col-12 col-md-8 offset-md-2">
+            <form action="" method="post">
+                <div>
+                    <select asp-for="PredictionModes" class="form-select">
+                        <option value="1" selected>Media Móvil Simple</option>
+                        <option value="2">Regresión Lineal</option>
+                        <option value="3">Momentum</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary float-end">Guardar</button>
+                </div>
+            </form>
+        </div>
+    }
+    @if (Model.PredictionModes == 2)
+    {
+        <div class="col-12 col-md-8 offset-md-2">
+            <form action="" method="post">
+                <div>
+                    <select asp-for="PredictionModes" class="form-select">
+                        <option value="1">Media Móvil Simple</option>
+                        <option value="2" selected>Regresión Lineal</option>
+                        <option value="3">Momentum</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary float-end">Guardar</button>
+                </div>
+            </form>
+        </div>
+    }
+    @if (Model.PredictionModes == 3)
+    {
+        <div class="col-12 col-md-8 offset-md-2">
+            <form action="" method="post">
+                <div>
+                    <select asp-for="PredictionModes" class="form-select">
+                        <option value="1">Media Móvil Simple</option>
+                        <option value="2">Regresión Lineal</option>
+                        <option value="3" selected>Momentum</option>
+                    </select>
+                </div>
+                <div>
+                    <button type="submit" class="btn btn-primary float-end">Guardar</button>
+                </div>
+            </form>
+        </div>
+    }
+</div>

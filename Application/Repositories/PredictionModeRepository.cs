@@ -11,7 +11,7 @@ namespace Application.Repositories
 
         private PredictionModeRepository()
         {
-            Value = new PredictionModeDto(); // Inicializa con un objeto por defecto
+            Value = new PredictionModeDto(); 
         }
 
         public static PredictionModeRepository Instance

@@ -2,7 +2,7 @@
 {
     public class PredictionDataDto
     {
-        public DateTime Date { get; set; }
-        public double Valor { get; set; }
+        public List<DateTime> Date { get; set; }
+        public List<double> Valor { get; set; }
     }
 }

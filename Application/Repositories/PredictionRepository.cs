@@ -6,9 +6,10 @@ namespace Application.Repositories
     {
         private PredictionRepository() { }
         public static PredictionRepository Instance { get; set; } = new();
-        public PredictionListDto productListDto { get; set; } = new()
+        public PredictionDataDto productDto { get; set; } = new()
         {
-            PredictionsData = new()
+            Date = new(),
+            Valor = new()
         };
     }
 }

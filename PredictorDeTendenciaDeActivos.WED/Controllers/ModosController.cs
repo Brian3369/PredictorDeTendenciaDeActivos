@@ -14,7 +14,7 @@ namespace PredictorDeTendenciaDeActivos.WED.Controllers
             _predictionModeService = new PredictionModeService();
         }
 
-        public IActionResult Index()
+        public IActionResult Index(string? message = null)
         {
             var predictionModeDto = _predictionModeService.GetMode();
             var predictionMode = new PredictionMode
@@ -22,6 +22,7 @@ namespace PredictorDeTendenciaDeActivos.WED.Controllers
                 PredictionModes = predictionModeDto.PredictionModes
             };
 
+            ViewBag.Message = message;
             return View(predictionMode);
         }
 
@@ -37,7 +38,7 @@ namespace PredictorDeTendenciaDeActivos.WED.Controllers
                 PredictionModes = mode.PredictionModes
             });
 
-            return RedirectToRoute(new { controller = "Home", action = "Index"}); ;
+            return RedirectToRoute(new { controller = "Modos", action = "Index", message = "Modo seleccionado"});
         }
     }
 }

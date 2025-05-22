@@ -20,7 +20,7 @@
                     </select>
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-primary float-end">Guardar</button>
+                    <button type="submit" class="btn btn-primary mt-2 float-end">Guardar</button>
                 </div>
             </form>
         </div>
@@ -37,7 +37,7 @@
                     </select>
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-primary float-end">Guardar</button>
+                    <button type="submit" class="btn btn-primary mt-2 float-end">Guardar</button>
                 </div>
             </form>
         </div>
@@ -54,9 +54,17 @@
                     </select>
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-primary float-end">Guardar</button>
+                    <button type="submit" class="btn btn-primary mt-2 float-end">Guardar</button>
                 </div>
             </form>
         </div>
     }
 </div>
+
+@if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+{
+    <div class="col-12 col-md-8 mt-3 offset-md-2 alert alert-success alert-dismissible fade show" role="alert">
+        @ViewBag.Message
+        <button type="button" class="btn-close" data-bs-dismiss="alert" arial-label="Close"></button>
+    </div>
+}

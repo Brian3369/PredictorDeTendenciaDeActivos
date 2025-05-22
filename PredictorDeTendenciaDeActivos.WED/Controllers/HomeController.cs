@@ -1,3 +1,5 @@
+using Application.Dtos;
+using Application.Service;
 using Application.ViewModel;
 using Microsoft.AspNetCore.Mvc;
 using PredictorDeTendenciaDeActivos.WED.Models;
@@ -7,21 +9,37 @@ namespace PredictorDeTendenciaDeActivos.WED.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly PredictionService _predictionService;
+        public HomeController()
+        {
+            _predictionService = new PredictionService();
+        }
         public IActionResult Index()
         {
+            var preditionDataDto = _predictionService.GetDatos();
+            var preditionData = new AddPreditionData
+            {
+                Date = preditionDataDto.Date,
+                Valor = preditionDataDto.Valor
+            };
+
             return View();
         }
 
         [HttpPost]
         public IActionResult Index(AddPreditionData data)
         {
-            return View();
-        }
+            if (!ModelState.IsValid)
+            {
+                return View();
+            }
+            _predictionService.AddDatos(new PredictionDataDto()
+            {
+                Date = data.Date,
+                Valor = data.Valor
+            });
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return RedirectToRoute(new { controller = "Home", action = "Index" });
         }
     }
 }

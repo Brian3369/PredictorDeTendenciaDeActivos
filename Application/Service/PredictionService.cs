@@ -9,8 +9,8 @@ namespace Application.Service
         {
             var valores = dto.Valor;
 
-            //if (valores.Count != 20)
-            //    return "Error: Se requieren exactamente 20 valores para realizar la predicción.";
+            if (valores.Count != 20)
+                return "Error: Se requieren exactamente 20 valores para realizar la predicción.";
 
             var smaCorta = valores.TakeLast(5).Average();
             var smaLarga = valores.Average();
